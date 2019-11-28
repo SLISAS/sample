@@ -19,4 +19,10 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_length_of(:email).is_at_most(255) }
   it { is_expected.to validate_presence_of :password }
   it { is_expected.to validate_length_of(:password).is_at_least(6) }
+
+  describe "authentificated? should return false for a user with nil digest" do
+    it "is invalid without remember_digest" do
+      expect(user.authenticated?(:remember_token)).to eq false
+    end
+  end
 end
