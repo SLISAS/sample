@@ -29,6 +29,9 @@ gem 'bcrypt'
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 # Use ActiveStorage variant
