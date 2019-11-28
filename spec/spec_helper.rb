@@ -18,6 +18,16 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.expect_with :rspec do |expectations|
+    # This file is copied to spec/ when you run 'rails generate rspec:install'
+    require "spec_helper"
+    ENV["RAILS_ENV"] ||= "test"
+    require File.expand_path("../../config/environment", __FILE__)
+    # Prevent database truncation if the environment is production
+    abort("The Rails environment is running in production mode!") if Rails.env.production?
+    require "spec_helper"
+    require "rspec/rails"
+    # Add additional requires below this line. Rails is not loaded until this point!
+    require "capybara/rspec"
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
     # defined using `chain`, e.g.:
@@ -44,8 +54,8 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
 =begin
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing
@@ -93,4 +103,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
 end
