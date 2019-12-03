@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
   before_action :get_user, only: %i[edit update]
   before_action :valid_user, only: %i[edit update]
-  before_action :chack_expiration, only: %i[edit update]
+  before_action :check_expiration, only: %i[edit update]
 
   def new
   end
@@ -27,9 +27,7 @@ class PasswordResetsController < ApplicationController
       @user.errors.add(:password, :blank)
       render "edit"
     elsif @user.update_attributes(user_params)
-      log_in @user
-      @user.update_attributes(:reset_digest, nil)
-      flash[:success] = "Password has been reset"
+      flash[:success] = "password has been reset."
       redirect_to @user
     else
       render "edit"
@@ -47,6 +45,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def valid_user
+    # if @user, @user.activated, @user.authenticated = false ,
+    #   redirect_to root_url
     unless (@user && @user.activated? && @user.authenticated?(:reset, params[:id]))
       redirect_to root_url
     end

@@ -83,6 +83,7 @@ group :test do
     branch: 'rails-5'
      gem "rspec-rails"
   gem "factory_bot_rails"
+  gem 'rails-controller-testing'
 end
 
 group :production do
