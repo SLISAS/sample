@@ -83,6 +83,8 @@ group :test do
     branch: 'rails-5'
      gem "rspec-rails"
   gem "factory_bot_rails"
+  gem 'spring-commands-rspec'
+  gem 'rspec-its'
 end
 
 group :production do
