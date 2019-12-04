@@ -83,7 +83,12 @@ group :test do
     branch: 'rails-5'
      gem "rspec-rails"
   gem "factory_bot_rails"
+<<<<<<< HEAD
   gem 'rails-controller-testing'
+=======
+  gem 'spring-commands-rspec'
+  gem 'rspec-its'
+>>>>>>> user-microposts
 end
 
 group :production do
