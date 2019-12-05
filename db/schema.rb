@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_081005) do
+ActiveRecord::Schema.define(version: 2019_12_04_075705) do
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_081005) do
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
-    t.index ["follower_id"], name: "index_relationships_on_follower_id_and_follower_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id_and_follower_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
