@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <% provide(:title, "Forget password")%>
 <h1>Forgot password</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-=======
-=======
->>>>>>> following-users
-<% provide(:title, "Forgot password")%>
-<h1>Forgot password</h1>
-<div class="row">
-  <div class = "col-md-6 col-md-offset-3">
-<<<<<<< HEAD
->>>>>>> user-microposts
-=======
->>>>>>> following-users
-    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control'%>
-      <%= f.submit "Submit", class: "btn btn-primary"%>
-    <% end %>
-  </div>
-</div>
+    <% provide(:title, "Forgot password")%>
+    <h1>Forgot password</h1>
+    <div class="row">
+      <div class = "col-md-6 col-md-offset-3">
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control'%>
+          <%= f.submit "Submit", class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>

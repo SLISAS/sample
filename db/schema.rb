@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_12_02_081005) do
-=======
-ActiveRecord::Schema.define(version: 2019_12_04_072730) do
->>>>>>> user-microposts
-=======
 ActiveRecord::Schema.define(version: 2019_12_04_075705) do
->>>>>>> following-users
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -37,11 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_075705) do
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
-<<<<<<< HEAD
-    t.index ["follower_id"], name: "index_relationships_on_follower_id_and_follower_id"
-=======
     t.index ["follower_id"], name: "index_relationships_on_follower_id_and_follower_id", unique: true
->>>>>>> following-users
   end
 
   create_table "users", force: :cascade do |t|
