@@ -2,6 +2,7 @@ require "rails_helper"
 require "spec_helper"
 
 RSpec.describe Micropost, type: :model do
+<<<<<<< HEAD
   #  マイクロポスト
   describe "mictopost association" do
     before { user.save }
@@ -31,4 +32,6 @@ RSpec.describe Micropost, type: :model do
       end
     end
   end
+=======
+>>>>>>> following-users
 end

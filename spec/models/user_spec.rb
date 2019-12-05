@@ -209,5 +209,48 @@ RSpec.describe User, type: :model do
         end
       end
     end
+
+    # マイクロポストフィード
+    describe "#micropost feed" do
+      let(:following) { create_list(:other_user, 30) }
+      let(:not_following) { create(:other_user) }
+      before do
+        create_list(:user_post, 10, user: user)
+        create_list(:other_user_post, 10, user: not_following)
+        following.each do |u|
+          user.follow(u)
+          u.follow(user)
+          create_list(:other_user_post, 3, user: u)
+        end
+      end
+
+      it { expect(user.microposts.count).to eq 10 }
+      it { expect(not_following.microposts.count).to eq 10 }
+      it { expect(Micropost.all.count).to eq 110 }
+
+      # 表示が正しいこと
+      describe "have right microposts" do
+        # フォロー中のユーザのマイクロポスト
+        it "following-users post" do
+          following.each do |u|
+            u.micropost.each do |post|
+              expect(user.feed).to include(post)
+            end
+          end
+        end
+        # 自分のポスト
+        it "my own post" do
+          user.microposts.each do |post|
+            expect(user.feed).to include(post)
+          end
+        end
+        # フォローしていないユーザのマイクロポストは非表示である
+        it "not have non-following-users post" do
+          not_following.Microposts.each do |post|
+            expect(user.feed).not_to include(post)
+          end
+        end
+      end
+    end
   end
 end
